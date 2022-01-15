@@ -6,9 +6,9 @@ if(!$con){
     die("connection failed:".mysqli_connect_error());
 }
 
-else{
+// else{
 
-  echo("Connected");
-}
+//   echo("Connected");
+// }
 
 ?>

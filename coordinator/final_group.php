@@ -1,3 +1,7 @@
+<?php
+include_once 'data/database.php';
+$result = mysqli_query($con,"SELECT * FROM group_data");
+?>
 <!doctype html>
 <html class="no-js" lang="">
 <head>
@@ -83,33 +87,39 @@
                         <li class="nav-item">
                             <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a>
                         </li>
-            
-                        <li class="nav-item">
-                            <a href="proposal_form.html" class="nav-link"><i class="far fa-address-card"></i><span>Proposal Form</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="teacher_profile.html" class="nav-link"><i class="fas fa-user"></i><span>Teacher Profile</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="project_committe.html" class="nav-link"><i class="fas fa-users"></i><span>Project Committee</span></a>
-                        </li>
-                  
 
                         <li class="nav-item">
-                            <a href="notice.html" class="nav-link"><i class="fas fa-exclamation-circle"></i><span>Notice</span></a>
+                            <a href="proposal_form.php" class="nav-link"><i
+                                    class="far fa-address-card"></i><span>Proposal Form</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="teacher_profile.html" class="nav-link"><i class="fas fa-user"></i><span>Teacher
+                                    Profile</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="project_committe.html" class="nav-link"><i class="fas fa-users"></i><span>Project
+                                    Committee</span></a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="notice.html" class="nav-link"><i
+                                    class="fas fa-exclamation-circle"></i><span>Notice</span></a>
                         </li>
                         <li class="nav-item ">
-                            <a href="contact.html" class="nav-link"><i class="fas fa-diagnoses"></i><span>Contact</span></a>
-                       
+                            <a href="contact.html" class="nav-link"><i
+                                    class="fas fa-diagnoses"></i><span>Contact</span></a>
+
                         </li>
 
                         <li class="nav-item ">
-                            <a href="about.html" class="nav-link"><i class="fas fa-diagnoses"></i><span>About us</span></a>
-                       
+                            <a href="about.html" class="nav-link"><i class="fas fa-diagnoses"></i><span>About
+                                    us</span></a>
+
                         </li>
-              
-                   
-                 
+
+
+
 
                     </ul>
                 </div>
@@ -119,57 +129,51 @@
 
                 <div class="row mt-4">
                     <!-- Add Notice Area Start Here -->
-                    <div class="col-xl-12">
+                    <div class="col-xl-12 col-md-12 sol-sm-12">
                         <div class="card">
                             <div class="shadow-lg p-2 mb-3 bg-body rounded">
                                 <h3 class="text-center mb-4 mt-3 h"
                                     style="font-style: bold; text-shadow: 0px 1px 1px #000000; ">
-                                    <i style="margin-right: 8px;" class="far fa-address-card text-success"></i>STUDENT
-                                    <span style="color: rgb(77, 129, 24);">PROJECT PROPOSAL</span> LIST
+                                    <i style="margin-right: 8px;" class="far fa-address-card text-success"></i>CREATED
+                                    <span style="color: rgb(77, 129, 24);">GROUP</span> LIST 
                                 </h3>
                             </div>
                             <div class="card-body">
 
                           
                                 <table class="table table-bordered">
-                                    <thead class="bg-primary text-white">
-                                      <tr>
-                                        <th scope="col">Roll No.</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Mobile</th>
-                                        <th scope="col">Topics</th>
-                                        <th scope="col">Supervisor Choice</th>
-                                        <th scope="col">Skills</th>
+                                    <thead class="bg-primary text-white p-3">
+                                        
+                                      <tr style="font-size:14px; text-align:center;">
+                                        <th scope="col">SL No.</th>
+                                        <th scope="col">Name & Roll</th>
+                                        <th scope="col">Supervisor Name</th>
+                                        <th scope="col">Topics Name</th>
+                                        <th scope="col">Group</th>
                                       </tr>
                                     </thead>
                                     <tbody>
-                                      <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
+                                    <?php
+                                       $i=0;
+                                        while($row = mysqli_fetch_array($result)) {
+                                        ?>
+                                      <tr style="font-size:12px" >
+                                        <td class="p-2 text-center"><?php echo $row["id"]; ?></td>
+                                        <td style="width:400px;"><?php echo $row["student_name_roll"]; ?></td>
+                                        <td class="text-center"><?php echo $row["supervisor_name"]; ?></td>
+                                        <td class="text-center"><?php echo $row["topics_name"]; ?></td>
+                                        <td class="text-center"><?php echo $row["group_name"]; ?></td>
+
                                       </tr>
-                                      <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                      </tr>
-                                      <tr>
-                                        <th scope="row">3</th>
-                                        <td colspan="2">Larry the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        
-                                      </tr>
+                                      <?php
+                                          $i++;
+                                             }
+                                      ?>
                                       
                                     </tbody>
                                   </table>
+
+                                  
 
                             </div>
                         </div>
@@ -183,11 +187,69 @@
             </div>
         </div>
         <!-- Page Area End Here -->
+        
+<!--+++++ Modal+++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Create Group For Project</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form method="post" action="data/group_form.php" class="new-added-form">
+      <div class="shadow-lg p-5 mb-3 bg-body rounded">
+      <div class="row p-2">
+        <div class="col-md-6 form-group">
+            <label>*Selected Students Name & Roll</label>
+            <textarea style="height: 120px;" class="textarea form-control"
+                name="student_name_roll" id="" cols="20" rows="9" required></textarea>
+        </div>
+        <div class="col-md-6 form-group">
+            <label>*Selected Supervisors Name</label>
+            <textarea style="height: 120px;" class="textarea form-control" name="supervisor_name"
+                id="" cols="20" rows="9" required></textarea>
+        </div>
+        </div>
+        <div class="row mt-4">
+        <div class="col-md-6 form-group">
+         <label>Topics Name</label>
+            <input type="text" name="topics_name" placeholder="" class="form-control"
+            required>
+         </div>
+         <div class="col-md-6 form-group">
+            <label>Group Name</label>
+            <input type="text" name="group_name" placeholder="" class="form-control"
+           required>
+            </div>
+            </div>
+
+        <div class="row justify-content-center mt-5">
+       <div class="col-md-6 form-group">
+       <button type="submit" name="save"
+        class=" btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Create</button>
+       <button type="reset" id=""
+       class="btn-fill-lg bg-blue-dark btn-hover-yellow">Cancel</button>
+      </div>
+      </form>
+      </div>
+      </div>
+     </div>
+    </div>
+
+   
+
+    
+  </div>
+</div>
+
+<!--+++++ Modal+++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
     </div>
 
 
     <script src="js/jquery.js"></script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         $(document).ready(function(){
             function loadData(type, category_id){
                 $.ajax({
@@ -219,7 +281,7 @@
                 
             })
         });
-      </script>
+      </script> -->
 
 
     <!-- jquery-->
